@@ -18,8 +18,18 @@ Color colorYellow = Color(0xFFFFCB00);
 Color colorOrange = Color(0xFFFFA100);
 Color colorRed = Color(0xFFD51C1C);
 
-// TextStyle sfProRegularTextStyle = TextStyle(
-//    fontFamily: '.SF Pro Display',
-//    fontSize: 16,
-//    fontWeight: FontWeight.w300,
-// );
+ TextStyle cardMessageTextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w300,
+ );
+
+TextStyle cardTitleTextStyle = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+);
+
+TextStyle cardSubTitleTextStyle = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+  color: colorGreen,
+);

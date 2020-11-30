@@ -40,7 +40,7 @@ class App extends StatelessWidget {
       ],
       title: 'Liga Stavok Flutterthone',
       theme: ThemeData(
-        fontFamily: 'SFProDisplay',
+        fontFamily: '.SF Pro Display',
         primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -71,7 +71,7 @@ class _MainPageState extends State<MainPage> {
             text: TextSpan(
               text: 'Liga Stavok ',
               style: TextStyle(
-                  fontFamily: 'SFProDisplay',
+                  fontFamily: '.SF Pro Display',
                   fontWeight: FontWeight.w900,
                   fontSize: 24,
                   color: colorWhite),

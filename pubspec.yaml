@@ -25,14 +25,3 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
-  fonts:
-    - family: SFProDisplay
-      fonts:
-        - asset: fonts/SFProDisplay-Regular.ttf
-          weight: 300
-        - asset: fonts/SFProDisplay-Medium.ttf
-          weight: 500
-        - asset: fonts/SFProDisplay-Bold.ttf
-          weight: 700
-        - asset: fonts/SFProDisplay-Heavy.ttf
-          weight: 900

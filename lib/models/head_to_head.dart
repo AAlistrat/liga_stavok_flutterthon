@@ -19,7 +19,7 @@ class MatchResult {
 }
 
 class HeadToHead extends Equatable {
-  final DateTime lastUpdated;
+  final String lastUpdated;
   final List<MatchResult> scoreTable;
   const HeadToHead({this.lastUpdated, this.scoreTable});
   @override
@@ -28,22 +28,23 @@ class HeadToHead extends Equatable {
   static HeadToHead fromJson(dynamic json) {
     final meetingsResults = json['last_meetings']['results'];
     List<MatchResult> results = [];
-    for (var result in meetingsResults) {
+    for (int i=0; i < meetingsResults.length; i++) {
       results.add(MatchResult(
-        seasonName: result['sport_event']['season']['name'],
-        date: result['sport_event']['scheduled'],
-        homeTeam: result['sport_event']['competitors'][0]['qualifier'] == 'home'
-            ? result['sport_event']['competitors'][0]['name']
-            : result['sport_event']['competitors'][1]['name'],
-        homeScore: result['sport_event_status']['home_score'],
-        awayScore: result['sport_event_status']['away_score'],
-        awayTeam: result['sport_event']['competitors'][0]['qualifier'] == 'away'
-            ? result['sport_event']['competitors'][0]['name']
-            : result['sport_event']['competitors'][1]['name'],
+        seasonName: meetingsResults[i]['sport_event']['season']['name'],
+        date: meetingsResults[i]['sport_event']['scheduled'].substring(0,10),
+        homeTeam: meetingsResults[i]['sport_event']['competitors'][0]['qualifier'] == 'home'
+             ? meetingsResults[i]['sport_event']['competitors'][0]['name']
+             : meetingsResults[i]['sport_event']['competitors'][1]['name'],
+        homeScore: meetingsResults[i]['sport_event_status']['home_score'].toString(),
+        awayScore: meetingsResults[i]['sport_event_status']['away_score'].toString(),
+        awayTeam: meetingsResults[i]['sport_event']['competitors'][0]['qualifier'] == 'away'
+             ? meetingsResults[i]['sport_event']['competitors'][0]['name']
+             : meetingsResults[i]['sport_event']['competitors'][1]['name'],
       ));
+      print(results[i].seasonName);
     }
     return HeadToHead(
-      lastUpdated: DateTime.now(),
+      lastUpdated: json['generated_at'].substring(0,10),
       scoreTable: results,
     );
   }

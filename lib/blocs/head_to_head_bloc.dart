@@ -13,7 +13,7 @@ class HeadToHeadBloc extends Bloc<HeadToHeadEvent, HeadToHeadState> {
     if (event is HeadToHeadRequested) {
       yield HeadToHeadLoading();
       try {
-        final HeadToHead headToHeadTable = await sportRadarApiClient.getHeadToHead(event.team1id, event.team2id);
+        final HeadToHead headToHeadTable = await sportRadarApiClient.getHeadToHead(event.langCode,event.team1id, event.team2id);
         yield HeadToHeadSuccess(headToHeadTable: headToHeadTable);
       } catch (_) {
         yield HeadToHeadFailure();

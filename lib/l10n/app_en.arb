@@ -1,0 +1,12 @@
+{
+    "headToHeadTitle": "Head to Head",
+    "@headToHeadTitle": {},
+    "headToHeadInitial": "Select teams and press \"\u27F3\".",
+    "@headToHeadInitial": {},
+    "headToHeadFailure": "Something went wrong.\nCheck your internet connection and try again.",
+    "@headToHeadFailure": {},
+    "croatia": "Croatia",
+    "@croatia": {},
+    "spain": "Spain",
+    "@spain": {}
+}

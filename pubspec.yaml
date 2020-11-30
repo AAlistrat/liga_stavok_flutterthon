@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.16.1
   cupertino_icons: ^1.0.0
   http: ^0.12.2
   flutter_bloc: ^6.1.1
@@ -20,6 +23,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  generate: true
   uses-material-design: true
   fonts:
     - family: SFProDisplay

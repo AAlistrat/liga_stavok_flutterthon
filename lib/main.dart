@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +28,16 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en',''),
+        const Locale('ru',''),
+      ],
       title: 'Liga Stavok Flutterthone',
       theme: ThemeData(
         fontFamily: 'SFProDisplay',
@@ -73,16 +85,9 @@ class _MainPageState extends State<MainPage> {
           )),
       backgroundColor: colorWhiteBackground,
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 8, top: 8),
-            child: Text(
-              'СТАТИСТИКА СОБЫТИЙ:',
-              style:
-                  TextStyle(color: colorGreenDark, fontWeight: FontWeight.w500),
-            ),
-          ),
           CarouselSlider(
             options: CarouselOptions(
               autoPlay: false,

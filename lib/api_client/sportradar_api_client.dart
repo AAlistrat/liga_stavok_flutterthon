@@ -40,8 +40,8 @@ class SportRadarApiClient {
     return responseJson['team']['name'];
   }
 
-  Future<HeadToHead> getHeadToHead(String team1id, String team2id) async {
-    final request = '$baseUrl-$accessLevel$version/$leagueGroup/$languageCode/teams/$team1id/versus/$team2id/matches.json?api_key=$apiKey';
+  Future<HeadToHead> getHeadToHead(String langCode, String team1id, String team2id) async {
+    final request = '$baseUrl-$accessLevel$version/$leagueGroup/$langCode/teams/$team1id/versus/$team2id/matches.json?api_key=$apiKey';
     final response = await this.httpClient.get(request);
     if (response.statusCode != 200) {
       throw Exception('problems with getting head-to-head');

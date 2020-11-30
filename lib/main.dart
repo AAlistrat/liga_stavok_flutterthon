@@ -1,13 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'constants.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
+import 'package:liga_stavok_flutterthon/api_client/sportradar_api_client.dart';
+import 'package:liga_stavok_flutterthon/blocs/head_to_head_bloc.dart';
+import 'package:liga_stavok_flutterthon/head_to_head_bloc_observer.dart';
+import 'package:liga_stavok_flutterthon/constants.dart';
+import 'package:liga_stavok_flutterthon/widgets/head_to_head_card.dart';
+import 'package:liga_stavok_flutterthon/widgets/vertical_timeline_card.dart';
 
 void main() {
-  runApp(MyApp());
+  Bloc.observer = HeadToHeadBlocObserver();
+  final SportRadarApiClient sportRadarApiClient = SportRadarApiClient(
+    httpClient: http.Client(),
+  );
+  runApp(App(sportRadarApiClient: sportRadarApiClient));
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  final SportRadarApiClient sportRadarApiClient;
+  App({@required this.sportRadarApiClient});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +32,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainPage(),
+      home: BlocProvider(
+        create: (context) => HeadToHeadBloc(sportRadarApiClient: sportRadarApiClient),
+        child: MainPage(),
+      ),
     );
   }
 }
@@ -30,7 +48,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _current = 0;
+  int _currentWidgetIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -72,34 +90,12 @@ class _MainPageState extends State<MainPage> {
               enlargeCenterPage: true,
               height: MediaQuery.of(context).size.height * 0.4,
               onPageChanged: (index, reason) => setState(() {
-                _current = index;
+                _currentWidgetIndex = index;
               }),
             ),
             items: [
-              Card(
-                child: ListTile(
-                  title: Text('Head to Head'),
-                  trailing: TextButton(
-                    child: Text(
-                      'ОБНОВИТЬ',
-                      style: TextStyle(color: colorGreen),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Card(
-                child: ListTile(
-                  title: Text('Vertical Timeline'),
-                  trailing: TextButton(
-                    child: Text(
-                      'НАЧАТЬ\nТРАНСЛЯЦИЮ',
-                      style: TextStyle(color: colorGreen),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
+              HeadToHeadCard(),
+              VerticalTimelineCard(),
             ],
           ),
           Row(
@@ -111,7 +107,7 @@ class _MainPageState extends State<MainPage> {
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _current == 0 ? colorGreen12 : colorGreen60),
+                    color: _currentWidgetIndex == 0 ? colorGreen12 : colorGreen60),
               ),
               Container(
                 width: 8.0,
@@ -119,7 +115,7 @@ class _MainPageState extends State<MainPage> {
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _current == 1 ? colorGreen12 : colorGreen60),
+                    color: _currentWidgetIndex == 1 ? colorGreen12 : colorGreen60),
               ),
             ],
           ),

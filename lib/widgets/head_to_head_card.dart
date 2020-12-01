@@ -98,6 +98,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                         child: Text(
                           AppLocalizations.of(context).headToHeadInitial,
                           style: cardMessageTextStyle,
+                          textAlign: TextAlign.center,
                         ),
                       );
                     }
@@ -111,6 +112,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                         child: Text(
                           AppLocalizations.of(context).headToHeadFailure,
                           style: cardMessageTextStyle,
+                          textAlign: TextAlign.center,
                         ),
                       );
                     }

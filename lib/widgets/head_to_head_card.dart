@@ -39,7 +39,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                   ),
                   IconButton(
                     visualDensity: VisualDensity.compact,
-                    icon: Icon(Icons.refresh, color: colorGreen, size: 22),
+                    icon: Icon(Icons.refresh, color: colorGreen, size: 24),
                     onPressed: () {
                       BlocProvider.of<HeadToHeadBloc>(context)
                           .add(HeadToHeadRequested(
@@ -68,7 +68,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                       }).toList(),
                     ),
                   ),
-                  Text('/ '),
+                  Text('/ ', style: TextStyle(fontSize: 18)),
                   DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       iconEnabledColor: colorGreen,
@@ -78,7 +78,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                       items: [AppLocalizations.of(context).spain].map<DropdownMenuItem<String>>((value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value, style: TextStyle(color: colorGreen)),
+                          child: Text(value, style: cardSubTitleTextStyle),
                         );
                       }).toList(),
                     ),

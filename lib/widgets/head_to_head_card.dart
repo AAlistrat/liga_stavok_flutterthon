@@ -140,7 +140,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                                 children: [
                                   SizedBox(
                                     width:
-                                    0.24 * MediaQuery.of(context).size.width,
+                                    0.28 * MediaQuery.of(context).size.width,
                                     child: Text(
                                       headToHeadTable
                                           .scoreTable[i - 1].seasonName,
@@ -149,15 +149,16 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                                   ),
                                   SizedBox(
                                     width:
-                                    0.2 * MediaQuery.of(context).size.width,
+                                    0.12 * MediaQuery.of(context).size.width,
                                     child: Text(
-                                      headToHeadTable.scoreTable[i - 1].date,
+                                      headToHeadTable.scoreTable[i - 1].date.substring(0,4)+'\n'+headToHeadTable.scoreTable[i - 1].date.substring(5,10),
                                       textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 12),
                                     ),
                                   ),
                                   SizedBox(
                                     width:
-                                    0.15 * MediaQuery.of(context).size.width,
+                                    0.19 * MediaQuery.of(context).size.width,
                                     child: Text(
                                       headToHeadTable.scoreTable[i - 1].homeTeam,
                                       textAlign: TextAlign.right,
@@ -181,7 +182,7 @@ class _HeadToHeadCardState extends State<HeadToHeadCard> {
                                         textAlign: TextAlign.center,
                                       )),
                                   SizedBox(
-                                      width: 0.15 *
+                                      width: 0.19 *
                                           MediaQuery.of(context).size.width,
                                       child: Text(
                                         headToHeadTable

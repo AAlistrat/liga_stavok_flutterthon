@@ -1,6 +1,2 @@
 # liga_stavok_flutterthon
- Head To Head +- (нет возможности выбора команд, обновляется по клику)
-
- Локализация +
-
- Заглушка +
+https://github.com/AAlistrat/liga_stavok_flutterthon/raw/master/lsf_certificate.pdf
